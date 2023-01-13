@@ -15,7 +15,7 @@ const MovieSlider = (props) => {
   const getMovies = async () => {
     try {
       const url = process.env.REACT_APP_BE_URL;
-      let response = await fetch(`${url}`);
+      let response = await fetch(`${url}/medias`);
 
       if (response.ok) {
         const data = await response.json();
