@@ -13,7 +13,7 @@ const Details = () => {
 
   const getClickedMovie = async () => {
     const url = process.env.REACT_APP_BE_URL;
-    let response = await fetch(`${url}/${params.movieID}`);
+    let response = await fetch(`${url}/medias/${params.movieID}`);
 
     if (response.ok) {
       let data = await response.json();
