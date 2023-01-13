@@ -14,11 +14,12 @@ const MovieSlider = (props) => {
 
   const getMovies = async () => {
     try {
-      let response = await fetch("https://www.omdbapi.com/?i=tt3896198&apikey=874ae9ca&s=" + props.title);
+      const url = process.env.REACT_APP_BE_URL;
+      let response = await fetch(`${url}`);
 
       if (response.ok) {
         const data = await response.json();
-        const movieArray = data.Search;
+        const movieArray = data;
         console.log(movieArray);
         // this.setState({ film: movieArray });
         setFilm(movieArray);
@@ -57,7 +58,7 @@ const MovieSlider = (props) => {
               {film.slice(0, 6).map((movie) => (
                 <Col md={2} key={movie.imdbID} className="image-card">
                   <Link to={"/details/" + movie.imdbID}>
-                    <img className="movie-cover" src={movie.Poster} alt="#" />
+                    <img className="movie-cover" src={movie.poster} alt="#" />
                   </Link>
                 </Col>
               ))}
@@ -68,7 +69,7 @@ const MovieSlider = (props) => {
               {film.slice(4, 12).map((movie) => (
                 <Col md={2} key={movie.imdbID} className="image-card">
                   <Link to={"/details/" + movie.imdbID}>
-                    <img className="movie-cover" src={movie.Poster} alt="#" />
+                    <img className="movie-cover" src={movie.poster} alt="#" />
                   </Link>
                 </Col>
               ))}
